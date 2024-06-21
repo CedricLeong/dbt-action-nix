@@ -4,16 +4,12 @@ author: 'CedricLeong'
 inputs:
   dbt-snowflake:
     description: Installs only the snowflake adapter.
-    default: false
   dbt-postgres:
     description: Installs only the postgreSQL adapter.
-    default: false
   dbt-bigquery:
     description: Installs only the bigquery adapter.
-    default: false
   dbt-redshift:
     description: Installs only the redshift adapter.
-    default: false
 branding:
   icon: 'truck'
   color: 'blue'
@@ -30,18 +26,18 @@ runs:
       shell: bash
       run: nix profile install github:CedricLeong/dbt-action-nix
     - id: install-snowflake
-      if: ${{ inputs.dbt-snowflake != false}}
+      if: ${{ inputs.dbt-snowflake }}
       shell: bash
       run: nix profile install github:CedricLeong/dbt-action-nix/dbt-snowflake
     - id: install-postgres
-      if: ${{ inputs.dbt-postgres != false}}
+      if: ${{ inputs.dbt-postgres }}
       shell: bash
       run: nix profile install github:CedricLeong/dbt-action-nix/dbt-postgres
     - id: install-bigquery
-      if: ${{ inputs.dbt-bigquery != false}}
+      if: ${{ inputs.dbt-bigquery }}
       shell: bash
       run: nix profile install github:CedricLeong/dbt-action-nix/dbt-bigquery
     - id: install-redshift
-      if: ${{ inputs.dbt-redshift != false}}
+      if: ${{ inputs.dbt-redshift }}
       shell: bash
       run: nix profile install github:CedricLeong/dbt-aciton-nix/dbt-redshift
