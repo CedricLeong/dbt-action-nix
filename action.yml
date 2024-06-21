@@ -30,18 +30,18 @@ runs:
       shell: bash
       run: nix profile install github:CedricLeong/dbt-action-nix
     - id: install-snowflake
-      if: ${{ inputs.dbt-snowflake }}
+      if: ${{ inputs.dbt-snowflake != false}}
       shell: bash
       run: nix profile install github:CedricLeong/dbt-action-nix/dbt-snowflake
     - id: install-postgres
-      if: ${{ inputs.dbt-postgres }}
+      if: ${{ inputs.dbt-postgres != false}}
       shell: bash
       run: nix profile install github:CedricLeong/dbt-action-nix/dbt-postgres
     - id: install-bigquery
-      if: ${{ inputs.dbt-bigquery }}
+      if: ${{ inputs.dbt-bigquery != false}}
       shell: bash
       run: nix profile install github:CedricLeong/dbt-action-nix/dbt-bigquery
     - id: install-redshift
-      if: ${{ inputs.dbt-redshift }}
+      if: ${{ inputs.dbt-redshift != false}}
       shell: bash
       run: nix profile install github:CedricLeong/dbt-aciton-nix/dbt-redshift
