@@ -15,7 +15,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       packages = {
-        default = pkgs.dbt.withAdapters (adapters: [dapters.dbt-bigquery]);
+        default = pkgs.dbt.withAdapters (adapters: [adapters.dbt-bigquery]);
       };
     });
 }
