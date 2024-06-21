@@ -15,7 +15,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       packages = {
-        default = pkgs.dbt.withAdapters (adapters: [adapters.dbt-snowflake adapters.dbt-postgres adapters.dbt-redshift adapters.dbt-bigquery]);
+        default = pkgs.dbt.withAdapters (adapters: [adapters.dbt-redshift]);
       };
     });
 }
