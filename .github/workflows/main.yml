@@ -9,3 +9,5 @@ jobs:
 
       - id: install-version
         uses: CedricLeong/dbt-action-nix@HEAD
+        with:
+          dbt-bigquery: true
