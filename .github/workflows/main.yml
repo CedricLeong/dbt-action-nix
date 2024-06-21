@@ -1,0 +1,11 @@
+on: [push]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: Test action.
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: install-version
+        uses: CedricLeong/dbt-action-nix@HEAD

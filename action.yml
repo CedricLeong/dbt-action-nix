@@ -1,0 +1,23 @@
+name: 'DBT Nix Action'
+description: 'An action that allows for multiple DBT actions using NixOS and Flakes'
+author: 'CedricLeong'
+inputs:
+  dbt_profiles_dir:  # id of input
+    description: 'Directory the profile file is located in.'
+    required: false
+    default: './.github/'
+branding:
+  icon: 'truck'
+  color: 'blue'
+outputs:
+  output:
+    description: "Success or failure of the action"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+    - uses: nixbuild/nix-quick-install-action@v28
+    - id: InstallDBT
+      shell: bash
+      run: |
+        nix profile install github:CedricLeong/dbt-action-nix
