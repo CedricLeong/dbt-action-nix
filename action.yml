@@ -2,10 +2,18 @@ name: 'DBT Nix Action'
 description: 'An action that allows for multiple DBT actions using NixOS and Flakes'
 author: 'CedricLeong'
 inputs:
-  dbt_profiles_dir:  # id of input
-    description: 'Directory the profile file is located in.'
-    required: false
-    default: './.github/'
+  dbt-snowflake:
+    description: Installs only the snowflake adapter.
+    default: false
+  dbt-postgres:
+    description: Installs only the postgreSQL adapter.
+    default: false
+  dbt-bigquery:
+    description: Installs only the bigquery adapter.
+    default: false
+  dbt-redshift:
+    description: Installs only the redshift adapter.
+    default: false
 branding:
   icon: 'truck'
   color: 'blue'
@@ -17,7 +25,23 @@ runs:
   steps:
     - uses: actions/checkout@v4
     - uses: nixbuild/nix-quick-install-action@v28
-    - id: InstallDBT
+    - id: install-dbt
+      if: ${{ !inputs.dbt-snowflake && !inputs.dbt-postgres && !inputs.dbt-bigquery && !inputs.dbt-redshift }}
       shell: bash
-      run: |
-        nix profile install github:CedricLeong/dbt-action-nix
+      run: nix profile install github:CedricLeong/dbt-action-nix
+    - id: install-snowflake
+      if: ${{ inputs.dbt-snowflake }}
+      shell: bash
+      run: nix profile install github:CedricLeong/dbt-action-nix/dbt-snowflake
+    - id: install-postgres
+      if: ${{ inputs.dbt-postgres }}
+      shell: bash
+      run: nix profile install github:CedricLeong/dbt-action-nix/dbt-postgres
+    - id: install-bigquery
+      if: ${{ inputs.dbt-bigquery }}
+      shell: bash
+      run: nix profile install github:CedricLeong/dbt-action-nix/dbt-bigquery
+    - id: install-redshift
+      if: ${{ inputs.dbt-redshift }}
+      shell: bash
+      run: nix profile install github:CedricLeong/dbt-aciton-nix/dbt-redshift
