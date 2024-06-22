@@ -1,4 +1,4 @@
-name: 'DBT Nix Action'
+name: 'dbt Action'
 description: 'An action that allows for multiple DBT actions using NixOS and Flakes'
 author: 'CedricLeong'
 inputs:
